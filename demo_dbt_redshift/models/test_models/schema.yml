@@ -1,0 +1,24 @@
+
+version: 2
+
+models:
+  - name: get_countries_by_region
+    description: "Selecting countries by region"
+    columns:
+      - name: region
+        description: "Name of the continent where the country is located"
+        tests:
+          - not_null
+
+  - name: get_relevant_details_for_countries
+    description: "Selecting only the relevant columns from the countries of selected region"
+    columns:
+      - name: currency
+        description: currency code abbreviation for the country's currency
+
+  - name: filter_countries_data_by_date
+    description: "Getting countries whose data was ingested after 27th June"
+    columns:
+      - name: __hevo__ingested_at
+        description: "Timestamp of when the country's data was ingested by HEVO"
+

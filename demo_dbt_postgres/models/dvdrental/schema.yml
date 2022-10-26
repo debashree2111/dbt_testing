@@ -1,0 +1,67 @@
+
+version: 2
+
+models:
+  - name: payments_of_store_1_model
+    description: "Find payments of store #1"
+    columns:
+      - name: payment_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: customer_rental_greater_than_5_model
+    description: "Find customers in store #1 that spent less than $2.99 on individual rentals, but have spent a total higher than $5."
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: payments_of_amount_9_99_model
+    description: "Find payments of price $9.99"
+    columns:
+      - name: payment_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: customer_rental_equal_9_99_model
+    description: "Find customers that have rented movies priced $9.99"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+sources:
+  - name: public
+    tables:
+      - name: rental
+        columns:
+          - name: rental_id
+          - name: rental_date
+          - name: inventory_id
+          - name: customer_id
+          - name: return_date
+          - name: staff_id
+          - name: last_update
+      - name: customer
+      - name: payment
+        columns:
+          - name: payment_id
+          - name: rental_id
+          - name: amount
+          - name: customer_id
+          - name: payment_date
+          - name: staff_id
+      - name: film_category
+      - name: film
+      - name: inventory
+      - name: country
+      - name: city
+      - name: address
